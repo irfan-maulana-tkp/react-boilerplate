@@ -1,57 +1,95 @@
-import React, { useContext, useCallback } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 
-import { GlobalContext } from '../../context/global';
 import getGraphqlQuery from '../../queries/pokemons.graphql';
+import { HomeContainer, WrapperFull, Cover, Content, ListWrapper, PageWrapper } from './styles';
 
-import { HomeContainer, WrapperFull, Cover, Content, LinkWrapper, ListWrapper, IncrementWrapper } from './styles';
+import placeholderImg from '../../assets/black-square.jpg';
+
+const LIMIT  = 19;
+const SHIMMERS  = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
 
 const Home = () => {
-	const [globalState, globalDispatch] = useContext(GlobalContext);
-	const { count } = globalState;
+	const [page, setPage] = useState(1);
 
-	const { loading, data } = useQuery(getGraphqlQuery, {
+	const { loading, data, refetch } = useQuery(getGraphqlQuery, {
 		fetchPolicy: 'cache-first',
 		variables: {
-			limit: 2,
+			limit: LIMIT,
 			offset: 1
 		},
 	});
 
-	const incrementCounter = useCallback(() => {
-		globalDispatch({ type: 'INCREMENT_COUNTER' });
-	}, [globalDispatch]);
+	const onNext = () => {
+		if (data.pokemons.next) {
+			const lastData = data.pokemons.results[data.pokemons.results.length - 1]
+			const nextPage = lastData.id + 1;
+
+			refetch({
+				limit: LIMIT,
+				offset: nextPage
+			})
+			setPage(page + 1);
+		}
+	}
+
+	const onPrev = () => {
+		if (data.pokemons.previous) {
+			const firstData = data.pokemons.results[0]
+			const prevPage = firstData.id - 1;
+
+			refetch({
+				limit: LIMIT,
+				offset: page === 2 ? 1 : prevPage - (LIMIT),
+			})
+			setPage(page - 1);
+		}
+	}
 
 	return (
-		<HomeContainer>
-			<WrapperFull>
-				<Cover>
-					<Content>
-						<h1>React Boilerplate</h1>
-						<p>An opinionated react boilerplate created for personal learning</p>
-						<LinkWrapper>
-							<Link to={'/about'}>Go to about</Link>
-						</LinkWrapper>
-
-						{!loading && data && (
-							<ListWrapper>
-								{
-									data.pokemons.results.map((i) => <a key={i.name}>{i.name}</a>)
+  <HomeContainer>
+    <WrapperFull>
+      <Cover>
+        <Content>
+          <h1>Pokemon List</h1>
+          {loading && (
+          <ListWrapper>
+            {
+									SHIMMERS.map((i) => (
+  <Link key={i} to={`#`}>
+    <img src={placeholderImg} />
+    <div />
+  </Link>
+									))
 								}
-							</ListWrapper>
+          </ListWrapper>
 						)}
 
-						<IncrementWrapper>
-							<p>Current counter value: {count}</p>
-							<button type="button" onClick={incrementCounter}>
-								Click me to increase counter by 1
-							</button>
-						</IncrementWrapper>
-					</Content>
-				</Cover>
-			</WrapperFull>
-		</HomeContainer>
+          {!loading && data && (
+          <ListWrapper>
+            {
+									data.pokemons.results.map((i) => (
+  <Link key={i.id} to={`/${i.name}`}>
+    <img src={i.image} />
+    <div>{i.name}</div>
+  </Link>
+									))
+								}
+          </ListWrapper>
+						)}
+
+          {!loading && data && (
+          <PageWrapper>
+            <button onClick={onPrev} disabled={!data.pokemons.previous}>{`<<<`}</button>
+            <button>Page {page}</button>
+            <button onClick={onNext} disabled={!data.pokemons.next}>{`>>>`}</button>
+          </PageWrapper>
+						)}
+        </Content>
+      </Cover>
+    </WrapperFull>
+  </HomeContainer>
 	);
 };
 

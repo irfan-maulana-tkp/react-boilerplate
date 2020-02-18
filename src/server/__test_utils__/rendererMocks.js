@@ -1,4 +1,3 @@
-import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { MockedProvider } from '@apollo/react-testing';
 import serverMocks from './serverMocks';

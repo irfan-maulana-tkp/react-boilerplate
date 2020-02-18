@@ -11,9 +11,9 @@ const history = createBrowserHistory();
 describe('App', () => {
 	afterEach(cleanup);
 
-  test('should match snapshot', () => {
-    const { container } = render(<App history={history}/>);
+  test('should have author name on Footer', () => {
+		const { getByText } = render(<App history={history}/>);
 
-    expect(container).toBeInTheDocument();
+    expect(getByText('© 2020 by Jacky Effendi')).toBeInTheDocument();
   });
 });

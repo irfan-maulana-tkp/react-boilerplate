@@ -72,43 +72,25 @@ export const ListWrapper = styled.div`
 	align-items: center;
 	flex-wrap: wrap;
 	grid-auto-flow: row dense;
-
-	> a {
-		width: 200px;
-		min-height: 135px;
-		text-align: center;
-		font-size: 20px;
-		margin-bottom: 15px;
-		margin-right: 15px;
-		font-size: 16px;
-		background-color: #0c0d0e;
-		color: #fff;
-		border-radius: .25em;
-		padding: 10px 25px;
-		white-space: nowrap;
-		text-decoration: none;
-		cursor: pointer;
-
-		&:hover{
-			box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-			transition: 0.3s;
-		}
-
-		> div {
-			text-transform: capitalize;
-		}
-	}
 `;
 
-export const PageWrapper = styled.div`
-	margin-top: 2em;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: wrap;
-	grid-auto-flow: row dense;
+export const CardWrapper = styled.div`
+	width: 200px;
+	text-align: center;
+	font-size: 20px;
+	margin-bottom: 15px;
+	margin-right: 15px;
+	font-size: 16px;
+	background-color: #0c0d0e;
+	color: #fff;
+	border-radius: .25em;
+	padding: 10px 25px;
+	white-space: nowrap;
+	text-decoration: none;
+	text-transform: capitalize;
 
-	> button {
-		margin-right: .5em;
+	&:hover{
+		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+		transition: 0.3s;
 	}
 `;

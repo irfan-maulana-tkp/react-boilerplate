@@ -45,10 +45,16 @@ export const Content = styled.div`
     margin: 0;
     font-size: 45px;
 		letter-spacing: 0.01em;
+		text-transform: capitalize;
 
 		@media (min-width: 1280px) {
     	font-size: 60px;
 		}
+	}
+
+	> h2 {
+    text-align: center;
+    font-size: 20px;
 	}
 
 	> p {
@@ -65,6 +71,63 @@ export const Content = styled.div`
 	}
 `;
 
+export const ButtonWrapper = styled.div`
+	margin-top: 2em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	grid-auto-flow: row dense;
+
+	> button {
+		font-size: 20px;
+		display: inline-block;
+		font-size: 16px;
+		background-color: #61dafb;
+		color: #000;
+		padding: 12px 25px;
+		white-space: nowrap;
+		text-decoration: none;
+		border-radius: .25em;
+		cursor: pointer;
+
+		&:hover{
+			box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+			transition: 0.3s;
+		}
+	}
+`;
+
+export const ImageWrapper = styled.div`
+	margin-top: 2em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	grid-auto-flow: row dense;
+
+	> div {
+		text-align: center;
+		margin-right: 15px;
+		background-color: #0c0d0e;
+		color: #fff;
+		border-radius: .25em;
+		white-space: nowrap;
+		cursor: pointer;
+
+		&:hover{
+			box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+			transition: 0.3s;
+		}
+
+		> img {
+			width: 250px;
+			height: auto;
+		}
+	}
+`;
+
 export const ListWrapper = styled.div`
 	margin-top: 2em;
 	display: flex;
@@ -75,16 +138,14 @@ export const ListWrapper = styled.div`
 
 	> a {
 		width: 200px;
-		min-height: 135px;
 		text-align: center;
-		font-size: 20px;
 		margin-bottom: 15px;
 		margin-right: 15px;
 		font-size: 16px;
 		background-color: #0c0d0e;
 		color: #fff;
 		border-radius: .25em;
-		padding: 10px 25px;
+		padding: 12px 25px;
 		white-space: nowrap;
 		text-decoration: none;
 		cursor: pointer;
@@ -100,15 +161,26 @@ export const ListWrapper = styled.div`
 	}
 `;
 
-export const PageWrapper = styled.div`
-	margin-top: 2em;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: wrap;
-	grid-auto-flow: row dense;
-
-	> button {
+export const FormNickName = styled.form`
+	> input {
+		padding: 12px 6px;
+		margin-top: 8px;
+		font-size: 17px;
+		border: 1px solid grey;
 		margin-right: .5em;
+		border-radius: .25em;
+		min-width: 300px;
 	}
+`;
+
+export const ButtonSave = styled.button`
+	font-size: 20px;
+	display: inline-block;
+	font-size: 16px;
+	background-color: #61dafb;
+	color: #000;
+	padding: 12px 25px;
+	white-space: nowrap;
+	text-decoration: none;
+	border-radius: .25em;
 `;

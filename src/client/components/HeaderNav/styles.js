@@ -53,6 +53,7 @@ export const NavLogo = styled.a`
 export const NavLink = styled.a`
 	color: #fff;
 	text-decoration: none;
+	margin: 0 .5em;
 
 	&:hover{
 		color: #61dafb;
