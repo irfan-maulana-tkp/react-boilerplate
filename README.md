@@ -1,6 +1,8 @@
 # react-boilerplate
 This is a react-boilerplate created for personal learning
 
+![Main workflow](https://github.com/irfan-maulana-tkp/react-boilerplate/workflows/Main%20workflow/badge.svg) [![codecov](https://codecov.io/gh/irfan-maulana-tkp/react-boilerplate/branch/master/graph/badge.svg)](https://codecov.io/gh/irfan-maulana-tkp/react-boilerplate)
+
 It includes some dummy components to help you get started and understand the boilerplate structure.
 
 ## What it includes
