@@ -17,6 +17,8 @@ module.exports = {
 		'jsx',
 		'node'
 	],
+  collectCoverage: true,
+	coverageDirectory: 'coverage',
   collectCoverageFrom: [
     '<rootDir>/src/**/*.js',
 
