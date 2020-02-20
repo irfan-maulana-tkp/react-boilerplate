@@ -42,4 +42,4 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
-          file: ./clover.xml
+          file: ./coverage/clover.xml
