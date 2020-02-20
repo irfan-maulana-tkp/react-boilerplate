@@ -17,6 +17,8 @@ module.exports = {
 		'jsx',
 		'node'
 	],
+  collectCoverage: true,
+	coverageDirectory: 'coverage',
   collectCoverageFrom: [
     '<rootDir>/src/**/*.js',
 
@@ -39,6 +41,7 @@ module.exports = {
 
     // Test.
     '!**/__tests__/**',
+    '!**/__tests__/**/styles.js',
     '!**/__mocks__/**',
     '!**/__data_mocks__/**',
     '!**/__gql_mocks__/**',

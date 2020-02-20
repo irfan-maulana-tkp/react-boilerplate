@@ -12,7 +12,7 @@ const App = ({ history }) => {
   return (
     <ApolloProvider client={client}>
       <ContextProvider>
-        <Router  history={history}>
+        <Router history={history}>
           <Routes />
         </Router>
       </ContextProvider>

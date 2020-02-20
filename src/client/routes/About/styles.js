@@ -25,7 +25,6 @@ export const Cover = styled.div`
 	margin-right: auto;
 `;
 
-
 export const Content = styled.div`
 	padding-left: 20px;
 	padding-right: 20px;
